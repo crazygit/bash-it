@@ -1,4 +1,5 @@
 */enabled/*
+!*/enabled/*.list
 .DS_Store
 custom/*
 !custom/example.bash

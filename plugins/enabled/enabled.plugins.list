@@ -1,0 +1,10 @@
+base.plugin.bash
+battery.plugin.bash
+browser.plugin.bash
+dirs.plugin.bash
+enabled.plugins.list
+extract.plugin.bash
+git.plugin.bash
+ssh.plugin.bash
+tmux.plugin.bash
+z.plugin.bash
