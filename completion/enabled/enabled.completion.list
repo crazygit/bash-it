@@ -1,7 +1,6 @@
 bash-it.completion.bash
 defaults.completion.bash
 drush.completion.bash
-enabled.completion.list
 fabric-completion.bash
 git.completion.bash
 git_flow.completion.bash
