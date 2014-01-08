@@ -35,3 +35,34 @@ done
 SOURCE_STR='[[ -s $HOME/.bash_profile ]] && source $HOME/.bash_profile'
 
 grep -q "$SOURCE_STR" $HOME/.bashrc || echo '[[ -s $HOME/.bash_profile ]] && source $HOME/.bash_profile' >> $HOME/.bashrc
+
+
+# Install dircolors-solarized
+test -w $HOME/.dircolors &&
+      cp $HOME/.dircolors $HOME/.dircolors.bak &&
+        echo "Your original $HOME/.dircolors has been backed up to $HOME/.dircolors.bak"
+
+DIRCOLORS_SOLARIZED_DIR="$HOME/.dircolors-solarized"
+if [ ! -d $DIRCOLORS_SOLARIZED_DIR ];then
+    echo "Download dircolors-solarized..."
+    git clone git://github.com/seebi/dircolors-solarized.git $DIRCOLORS_SOLARIZED_DIR ||
+        echo "Download dircolors-solarized Failed"
+fi
+
+test -d $DIRCOLORS_SOLARIZED_DIR &&
+    cp -f $DIRCOLORS_SOLARIZED_DIR/dircolors.256dark $HOME/.dircolors &&
+        echo "Copied the $DIRCOLORS_SOLARIZED_DIR/dircolors.256dark to $HOME/.dircolors" ||
+            echo "Install dircolors-solarized Failed"
+
+# Install gnome-terminal-colors-solarized
+GNOME_TERMINAL_COLORS_SOLARIZED_DIR="$HOME/.gnome-terminal-colors-solarized"
+if [ ! -d $GNOME_TERMINAL_COLORS_SOLARIZED_DIR ];then
+    echo "Download gnome-terminal-colors-solarized..."
+    git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git $GNOME_TERMINAL_COLORS_SOLARIZED_DIR ||
+        echo "Download gnome-terminal-colors-solarized Failed"
+fi
+
+test -d $GNOME_TERMINAL_COLORS_SOLARIZED_DIR &&
+    echo "Active gnome-terminal-colors-solarized..." &&
+        $GNOME_TERMINAL_COLORS_SOLARIZED_DIR/set_dark.sh ||
+            echo "Active gnome-terminal-colors-solarized Failed"
