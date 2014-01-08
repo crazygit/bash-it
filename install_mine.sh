@@ -64,5 +64,5 @@ fi
 
 test -d $GNOME_TERMINAL_COLORS_SOLARIZED_DIR &&
     echo "Active gnome-terminal-colors-solarized..." &&
-        $GNOME_TERMINAL_COLORS_SOLARIZED_DIR/set_dark.sh ||
+        $GNOME_TERMINAL_COLORS_SOLARIZED_DIR/solarize dark ||
             echo "Active gnome-terminal-colors-solarized Failed"
