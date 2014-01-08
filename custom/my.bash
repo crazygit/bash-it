@@ -12,3 +12,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # aliases
 alias sudo="sudo -E"
+alias clear='clear;reset'
+
+HISTSIZE=10000
+HISTFILESIZE=20000
