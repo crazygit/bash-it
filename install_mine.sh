@@ -18,6 +18,7 @@ if [ ! -x $HOME/bin/vcprompt ];then
         sudo apt-get install -y curl
     fi
     mkdir -p $HOME/bin &&
+        echo "Download vcprompt..."
         curl -sL https://github.com/djl/vcprompt/raw/master/bin/vcprompt > $HOME/bin/vcprompt &&
         chmod +x $HOME/bin/vcprompt
 fi
@@ -30,3 +31,7 @@ do
         ln -sf $BASH_IT/${type}/available/$x $BASH_IT/${type}/enabled
     done
 done
+
+SOURCE_STR='[[ -s $HOME/.bash_profile ]] && source $HOME/.bash_profile'
+
+grep -q "$SOURCE_STR" $HOME/.bashrc || echo '[[ -s $HOME/.bash_profile ]] && source $HOME/.bash_profile' >> $HOME/.bashrc
