@@ -16,3 +16,4 @@ alias clear='clear;reset'
 
 HISTSIZE=10000
 HISTFILESIZE=20000
+export GREP_COLOR='01;07;31'
