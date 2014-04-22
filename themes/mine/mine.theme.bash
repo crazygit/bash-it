@@ -44,7 +44,8 @@ D_SUPERUSER_COLOR="${red}"
 D_MACHINE_COLOR="${cyan}"
 D_DIR_COLOR="${green}"
 D_SCM_COLOR="${yellow}"
-D_BRANCH_COLOR="${yellow}"
+D_BRANCH_COLOR="${green}"
+D_COMMITID_COLOR="${yellow}"
 D_CHANGES_COLOR="${red}"
 D_CMDFAIL_COLOR="${red}"
 D_VIMSHELL_COLOR="${cyan}"
@@ -72,7 +73,7 @@ demula_vcprompt() {
   if [ ! -z "$VCPROMPT_EXECUTABLE" ];
   then
     local D_VCPROMPT_FORMAT="on ${D_SCM_COLOR}%s ${D_INTERMEDIATE_COLOR}: \
-${D_BRANCH_COLOR}%b %r ${D_CHANGES_COLOR}%m%a%u ${D_DEFAULT_COLOR}"
+${D_BRANCH_COLOR}%b ${D_COMMITID_COLOR}%r ${D_CHANGES_COLOR}%m%a%u ${D_DEFAULT_COLOR}"
     $VCPROMPT_EXECUTABLE -f "$D_VCPROMPT_FORMAT"
   fi
 }
