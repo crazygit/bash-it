@@ -16,6 +16,8 @@ alias f='open -a Finder '
 alias fh='open -a Finder .'
 alias textedit='open -a TextEdit'
 alias hex='open -a "Hex Fiend"'
+alias skype='open -a Skype'
+alias mou='open -a Mou'
 
 if [ -s /usr/bin/firefox ] ; then
   unalias firefox
@@ -32,3 +34,7 @@ alias whotunes='lsof -r 2 -n -P -F n -c iTunes -a -i TCP@`hostname`:3689'
 
 # Flush your dns cache
 alias flush='dscacheutil -flushcache'
+
+# Show/hide hidden files (for Mac OS X Mavericks)
+alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE"
+alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE"
