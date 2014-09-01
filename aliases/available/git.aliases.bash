@@ -18,7 +18,7 @@ alias gpp='git pull && git push'
 alias gup='git fetch && git rebase'
 alias gp='git push'
 alias gpo='git push origin'
-alias gdv='git diff -w "$@" | vim -R -'
+#alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gcm='git commit -v -m'
@@ -52,9 +52,8 @@ esac
 
 if [ -z "$EDITOR" ]; then
     case $OSTYPE in
-      linux*)
-        alias gd='git diff | vim -R -'
-        ;;
+#      linux*) alias gd='git diff | vim -R -'
+#        ;;
       darwin*)
         alias gd='git diff | mate'
         ;;
