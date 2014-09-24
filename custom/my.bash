@@ -13,6 +13,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # aliases
 alias sudo="sudo -E"
 alias clear='clear;reset'
+alias sshp="ssh -qTfnN -D 7070 aws"
 
 
 HISTSIZE=10000
