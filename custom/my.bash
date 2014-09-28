@@ -55,6 +55,8 @@ function venv_cd {
 }
 
 alias cd="venv_cd"
+# init for create new terminal tab
+workon_cwd
 
 # set for local path
 ANDROID_SDK_HOME="$HOME/bin/adt-bundle-linux/sdk"
