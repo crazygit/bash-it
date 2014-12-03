@@ -13,8 +13,21 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # aliases
 alias sudo="sudo -E"
 alias clear='clear;reset'
+# ssh动态隧道转发
+# http://codelife.me/blog/2012/12/09/three-types-of-ssh-turneling/
+# -f Fork into background after authentication.
+# 后台认证用户/密码，通常和-N连用，不用登录到远程主机。
+# -D port
+# 指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.
+# -C Enable compression.
+# 压缩数据传输。
+# -N Do not execute a shell or command.
+# 不执行脚本或命令，通常与-f连用。
+# -g Allow remote hosts to connect to forwarded ports.
+# 在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。
 alias sshp="ssh -qTfnN -D 7070 aws"
-
+alias p8="find -iname '*.py' | xargs autopep8 -i"
+alias sshes="ssh -fNL 9200:localhost:9200 tcloud"
 
 HISTSIZE=10000
 HISTFILESIZE=20000
@@ -59,17 +72,18 @@ alias cd="venv_cd"
 workon_cwd
 
 # set for local path
-ANDROID_SDK_HOME="$HOME/bin/adt-bundle-linux/sdk"
+ANDROID_SDK_HOME="$HOME/bin/adt-bundle-linux-x86_64-20140702/sdk"
 ANDROID_TOOLS_DIR="$ANDROID_SDK_HOME/tools"
 ANDROID_PLATFORM_TOOLS_DIR="$ANDROID_SDK_HOME/platform-tools"
-ANDROID_BUILD_TOOLS_DIR="$ANDROID_SDK_HOME/build-tools/android-4.4"
+ANDROID_BUILD_TOOLS_DIR="$ANDROID_SDK_HOME/build-tools/android-4.4W"
 ANT_HOME="$HOME/bin/apache-ant-1.9.2"
-JAVA_HOME="/usr/lib/jvm/java-7-oracle"
+MAVEN_HOME="/home/linliang/bin/apache-maven-3.2.3"
+#JAVA_HOME="/usr/lib/jvm/java-7-oracle"
 
 export ANT_HOME=$ANT_HOME
 export JAVA_HOME=$JAVA_HOME
 export PATH=$PATH:"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:~/bin"
-export PATH=${PATH}:${ANT_HOME}/bin
+export PATH=${PATH}:${ANT_HOME}/bin:${MAVEN_HOME}/bin
 export PATH=$PATH:$ANDROID_SDK_HOME
 export PATH=$PATH:$ANDROID_TOOLS_DIR
 export PATH=$PATH:$ANDROID_PLATFORM_TOOLS_DIR
