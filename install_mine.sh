@@ -1,15 +1,42 @@
 #!/usr/bin/env bash
-
 BASH_IT="$HOME/.bash_it"
 
-test -w $HOME/.bash_profile &&
-      cp $HOME/.bash_profile $HOME/.bash_profile.bak &&
-        echo "Your original .bash_profile has been backed up to .bash_profile.bak"
+case $OSTYPE in
+  darwin*)
+    CONFIG_FILE=.bash_profile
+    ;;
+  *)
+    CONFIG_FILE=.bashrc
+    ;;
+esac
 
-cp $HOME/.bash_it/template/bash_profile.template.bash.mine $HOME/.bash_profile
+BACKUP_FILE=$CONFIG_FILE.bak
 
-echo "Copied the template .bash_profile into ~/.bash_profile, edit this file to customize bash-it"
+if [ -e "$HOME/$BACKUP_FILE" ]; then
+    echo -e "\033[0;33mBackup file already exists. Make sure to backup your .bashrc before running this installation.\033[0m" >&2
+    while true
+    do
+        read -e -n 1 -r -p "Would you like to overwrite the existing backup? This will delete your existing backup file ($HOME/$BACKUP_FILE) [y/N] " RESP
+        case $RESP in
+        [yY])
+            break
+            ;;
+        [nN]|"")
+            echo -e "\033[91mInstallation aborted. Please come back soon!\033[m"
+            exit 1
+            ;;
+        *)
+            echo -e "\033[91mPlease choose y or n.\033[m"
+            ;;
+        esac
+    done
+fi
 
+test -w "$HOME/$CONFIG_FILE" &&
+  cp -a "$HOME/$CONFIG_FILE" "$HOME/$CONFIG_FILE.bak" &&
+  echo -e "\033[0;32mYour original $CONFIG_FILE has been backed up to $CONFIG_FILE.bak\033[0m"
+
+cp "$HOME/.bash_it/template/bash_profile.template.bash" "$HOME/$CONFIG_FILE"
 
 # install vcprompt
 if [ ! -x $HOME/bin/vcprompt ];then
@@ -31,11 +58,6 @@ do
         ln -sf $BASH_IT/${type}/available/$x $BASH_IT/${type}/enabled
     done
 done
-
-SOURCE_STR='[[ -s $HOME/.bash_profile ]] && source $HOME/.bash_profile'
-
-grep -q "$SOURCE_STR" $HOME/.bashrc || echo '[[ -s $HOME/.bash_profile ]] && source $HOME/.bash_profile' >> $HOME/.bashrc
-
 
 # Install dircolors-solarized
 test -w $HOME/.dircolors &&
@@ -64,5 +86,5 @@ fi
 
 test -d $GNOME_TERMINAL_COLORS_SOLARIZED_DIR &&
     echo "Active gnome-terminal-colors-solarized..." &&
-        $GNOME_TERMINAL_COLORS_SOLARIZED_DIR/solarize dark ||
+        $GNOME_TERMINAL_COLORS_SOLARIZED_DIR/set_dark.sh ||
             echo "Active gnome-terminal-colors-solarized Failed"
