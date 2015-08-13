@@ -1,9 +1,6 @@
 bash-it.completion.bash
 defaults.completion.bash
-drush.completion.bash
 fabric-completion.bash
 git.completion.bash
-git_flow.completion.bash
 pip.completion.bash
 ssh.completion.bash
-tmux.completion.bash

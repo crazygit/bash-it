@@ -50,6 +50,10 @@ if [ ! -x $HOME/bin/vcprompt ];then
         chmod +x $HOME/bin/vcprompt
 fi
 
+# install bfg <https://rtyley.github.io/bfg-repo-cleaner/>
+# Removes large or troublesome blobs like git-filter-branch does, but faster. And written in Scala
+test -f $HOME/bin/bfg.jar || wget "https://search.maven.org/remote_content?g=com.madgag&a=bfg&v=LATEST" -O $HOME/bin/bfg.jar
+
 # enable aliases, plugins, completion
 for type in "aliases" "plugins" "completion"
 do
@@ -88,3 +92,6 @@ test -d $GNOME_TERMINAL_COLORS_SOLARIZED_DIR &&
     echo "Active gnome-terminal-colors-solarized..." &&
         $GNOME_TERMINAL_COLORS_SOLARIZED_DIR/set_dark.sh ||
             echo "Active gnome-terminal-colors-solarized Failed"
+
+# reset gnome color scheme
+# gconftool --recursive-unset /apps/gnome-terminal

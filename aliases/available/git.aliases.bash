@@ -62,11 +62,14 @@ if [ -z "$EDITOR" ]; then
 #        ;;
       darwin*)
         alias gd='git diff | mate'
+        alias gdc='git diff --cached| mate'
         ;;
       *)
         alias gd='git diff'
+        alias gdc='git diff --cached'
         ;;
     esac
 else
     alias gd="git diff | $EDITOR"
+    alias gdc="git diff --cached| $EDITOR"
 fi

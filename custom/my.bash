@@ -1,7 +1,7 @@
 # vi-mode
 set -o vi
 
-#color man pages
+# color man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -13,6 +13,8 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # aliases
 alias sudo="sudo -E"
 alias clear='clear;reset'
+alias bfg="java -jar $HOME/bin/bfg.jar"
+
 # ssh动态隧道转发
 # http://codelife.me/blog/2012/12/09/three-types-of-ssh-turneling/
 # -f Fork into background after authentication.
@@ -25,6 +27,7 @@ alias clear='clear;reset'
 # 不执行脚本或命令，通常与-f连用。
 # -g Allow remote hosts to connect to forwarded ports.
 # 在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。
+
 alias sshp="ssh -qTfnN -D 7070 aws"
 alias p8="find -iname '*.py' | xargs autopep8 -i"
 alias sshes="ssh -fNL 9200:localhost:9200 tcloud"
@@ -77,8 +80,8 @@ ANDROID_TOOLS_DIR="$ANDROID_SDK_HOME/tools"
 ANDROID_PLATFORM_TOOLS_DIR="$ANDROID_SDK_HOME/platform-tools"
 ANDROID_BUILD_TOOLS_DIR="$ANDROID_SDK_HOME/build-tools/android-4.4W"
 ANT_HOME="$HOME/bin/apache-ant-1.9.2"
-MAVEN_HOME="/home/linliang/bin/apache-maven-3.2.3"
-#JAVA_HOME="/usr/lib/jvm/java-7-oracle"
+MAVEN_HOME="$HOME/bin/apache-maven-3.2.3"
+JAVA_HOME="/usr/lib/jvm/java-7-oracle"
 
 export ANT_HOME=$ANT_HOME
 export JAVA_HOME=$JAVA_HOME
