@@ -39,16 +39,16 @@
 # ----------------------------------------------------------------- COLOR CONF
 D_DEFAULT_COLOR="${normal}"
 D_INTERMEDIATE_COLOR="${white}"
-D_USER_COLOR="${purple}"
+D_USER_COLOR="${bold_purple}"
 D_SUPERUSER_COLOR="${red}"
 D_MACHINE_COLOR="${cyan}"
 D_DIR_COLOR="${green}"
 D_SCM_COLOR="${yellow}"
-D_BRANCH_COLOR="${green}"
-D_COMMITID_COLOR="${yellow}"
-D_CHANGES_COLOR="${red}"
-D_CMDFAIL_COLOR="${red}"
-D_VIMSHELL_COLOR="${cyan}"
+D_BRANCH_COLOR="${bold_green}"
+D_COMMITID_COLOR="${bold_yellow}"
+D_CHANGES_COLOR="${bold_red}"
+D_CMDFAIL_COLOR="${bold_red}"
+D_VIMSHELL_COLOR="${bold_cyan}"
 
 # ------------------------------------------------------------------ FUNCTIONS
 case $TERM in
