@@ -27,10 +27,12 @@ alias bfg="java -jar $HOME/bin/bfg.jar"
 # 不执行脚本或命令，通常与-f连用。
 # -g Allow remote hosts to connect to forwarded ports.
 # 在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。
-
 alias sshp="ssh -qTfnN -D 7070 aws"
 alias p8="find -iname '*.py' | xargs autopep8 -i"
+#alias p8='git status -s "*.py" |awk {"print $2"} |xargs autopep8 -i'
 alias sshes="ssh -fNL 9200:localhost:9200 tcloud"
+alias sshdashes="ssh -fNL 9200:localhost:9200 dash"
+alias bfg="java -jar $HOME/bin/bfg.jar"
 
 HISTSIZE=10000
 HISTFILESIZE=20000
@@ -40,6 +42,11 @@ HISTFILESIZE=20000
 # by placing a .venv file in the project root with a virtualenv name in it
 
 [[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
+
+
+# 设置GITHUB用户信息
+GITHUB_USERNAME="crazygit"
+GITHUB_EMAIL="lianglin999@gmail.com"
 
 function workon_cwd {
     # Check that this is a Git repo
@@ -56,6 +63,17 @@ function workon_cwd {
         if [ "$VIRTUAL_ENV" != "$WORKON_HOME/$ENV_NAME" ]; then
             if [ -e "$WORKON_HOME/$ENV_NAME/bin/activate" ]; then
                 workon "$ENV_NAME" && export CD_VIRTUAL_ENV="$ENV_NAME"
+            fi
+        fi
+        # 为github仓库设置独立的用户名和密码，以便和工作邮箱分开
+        if $(git remote -v|grep -q "git@github.com:$GITHUB_USERNAME");then
+            username=$(git config user.name)
+            email=$(git config user.email)
+            if [ x"$username" != x"$GITHUB_USERNAME" ];then
+                git config user.name $GITHUB_USERNAME
+            fi
+            if [ x"$email" != x"$GITHUB_EMAIL" ];then
+                git config user.email $GITHUB_EMAIL
             fi
         fi
     elif [ $CD_VIRTUAL_ENV ]; then
