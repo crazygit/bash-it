@@ -37,8 +37,8 @@ bash-it ()
     param '3: specific component [optional]'
     example '$ bash-it show plugins'
     example '$ bash-it help aliases'
-    example '$ bash-it enable plugin git'
-    example '$ bash-it disable alias hg'
+    example '$ bash-it enable plugin git [tmux]...'
+    example '$ bash-it disable alias hg [tmux]...'
     typeset verb=${1:-}
     shift
     typeset component=${1:-}
@@ -142,9 +142,9 @@ _bash-it-describe ()
         printf "%-20s%-10s%s\n" "$(basename $f | cut -d'.' -f1)" "  [$enabled]" "$(cat $f | metafor about-$file_type)"
     done
     printf '\n%s\n' "to enable $preposition $file_type, do:"
-    printf '%s\n' "$ bash-it enable $file_type  <$file_type name> -or- $ bash-it enable $file_type all"
+    printf '%s\n' "$ bash-it enable $file_type  <$file_type name> [$file_type name]... -or- $ bash-it enable $file_type all"
     printf '\n%s\n' "to disable $preposition $file_type, do:"
-    printf '%s\n' "$ bash-it disable $file_type <$file_type name> -or- $ bash-it disable $file_type all"
+    printf '%s\n' "$ bash-it disable $file_type <$file_type name> [$file_type name]... -or- $ bash-it disable $file_type all"
 }
 
 _disable-plugin ()
