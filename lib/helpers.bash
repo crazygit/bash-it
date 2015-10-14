@@ -72,7 +72,15 @@ bash-it ()
             fi
         fi
     fi
-    $func $*
+
+    if [ x"$verb" == x"enable" -o x"$verb" == x"disable" ];then
+        for arg in "$@"
+        do
+            $func $arg
+        done
+    else
+        $func $*
+    fi
 }
 
 _is_function ()
@@ -198,7 +206,7 @@ _disable-thing ()
     else
         typeset plugin=$(command ls $BASH_IT/$subdirectory/enabled/$file_entity.*bash 2>/dev/null | head -1)
         if [ -z "$plugin" ]; then
-            printf '%s\n' "sorry, that does not appear to be an enabled $file_type."
+            printf '%s\n' "sorry, $file_entity does not appear to be an enabled $file_type."
             return
         fi
         rm $BASH_IT/$subdirectory/enabled/$(basename $plugin)
@@ -267,7 +275,7 @@ _enable-thing ()
     else
         typeset plugin=$(command ls $BASH_IT/$subdirectory/available/$file_entity.*bash 2>/dev/null | head -1)
         if [ -z "$plugin" ]; then
-            printf '%s\n' "sorry, that does not appear to be an available $file_type."
+            printf '%s\n' "sorry, $file_entity does not appear to be an available $file_type."
             return
         fi
 
