@@ -4,3 +4,5 @@ fabric-completion.bash
 git.completion.bash
 pip.completion.bash
 ssh.completion.bash
+tmux.completion.bash
+todo.completion.bash

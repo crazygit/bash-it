@@ -1,3 +1,6 @@
+apt.aliases.bash
 general.aliases.bash
 git.aliases.bash
+tmux.aliases.bash
+todo.txt-cli.aliases.bash
 vim.aliases.bash

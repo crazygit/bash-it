@@ -1,5 +1,10 @@
+alias-completion.bash
 base.plugin.bash
 battery.plugin.bash
 git.plugin.bash
 ssh.plugin.bash
+tmuxinator.plugin.bash
+tmux.plugin.bash
+todo.plugin.bash
+virtualenv.plugin.bash
 z.plugin.bash
