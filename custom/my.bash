@@ -66,7 +66,7 @@ function workon_cwd {
             fi
         fi
         # 为github仓库设置独立的用户名和密码，以便和工作邮箱分开
-        if $(git remote -v|grep -q "git@github.com:$GITHUB_USERNAME");then
+        if $(git remote -v|grep -q "git@github.com");then
             username=$(git config user.name)
             email=$(git config user.email)
             if [ x"$username" != x"$GITHUB_USERNAME" ];then
