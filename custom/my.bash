@@ -112,3 +112,9 @@ export PATH=$PATH:$ANDROID_BUILD_TOOLS_DIR
 
 # Grep color
 export GREP_COLOR='01;07;31'
+
+
+# go
+export GOROOT="/usr/local/go"
+export GOPATH="$HOME/golang"
+export PATH=$PATH:$GOROOT/bin:${GOPATH//://bin:}/bin
